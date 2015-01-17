@@ -5,3 +5,12 @@ license          'Apache 2.0'
 description      'Installs/Configures postgresql_studio'
 long_description 'Installs/Configures postgresql_studio'
 version          '0.1.0'
+
+supports 'ubuntu'
+supports 'debian'
+supports 'centos'
+
+depends 'apt'
+depends 'ark'
+depends 'application'
+depends 'application_java'

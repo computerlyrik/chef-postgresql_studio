@@ -16,3 +16,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+version = node['postgresql_studio']['version']
+unzip_path = "/opt/postgresql_studio"
+
+package "unzip"
+
+ark "postgresql_studio_#{version}" do
+  url node['postgresql_studio']['download_url']
+  path unzip_path
+  extension "zip"
+  action :put
+end
+
+application 'postgresql_studio' do
+  path         '/usr/local/postgresql_studio/'
+  java_webapp do
+    war '#{unzip_path}/postgresql_studio_#{version}/pgstudio.war'
+  end
+  tomcat
+end
